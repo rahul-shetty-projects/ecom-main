@@ -1,0 +1,84 @@
+<app-sidebar></app-sidebar>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12 offset-md-4">
+    <!-- <p class="category">Admin Dashboard</p> -->
+    <!-- Nav tabs -->
+    <div class="card mt-5">
+      <div class="card-header">
+        <ul class="nav nav-tabs justify-content-center" role="tablist">
+          <li class="nav-item" style="cursor: pointer;">
+            <a class="nav-link active" data-toggle="tab" (click)="changeTab('users')" role="tab">
+                <i class="fa fa-users" aria-hidden="true"></i> Users
+            </a>
+          </li>
+          <li class="nav-item" style="cursor: pointer;">
+            <a class="nav-link active" data-toggle="tab" (click)="changeTab('orders')" role="tab">
+                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Orders
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <!-- Tab panes -->
+        <div class="tab-content text-center">
+          <div class="tab-pane active" id="users" *ngIf="tab1">
+            <h1>Users</h1>
+<div class="container table-responsive py-5"> 
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{user?.firstName}} {{user?.lastName}}</td>
+          <td>{{user?.userEmail}}</td>
+          <td>{{user?.userMobile}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    
+          </div>
+          <div class="tab-pane active" id="orders" *ngIf="tab2" >
+            <h1>Orders</h1>
+<div class="container table-responsive py-5"> 
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Ordered By</th>
+          <th scope="col">View</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td><img src="{{order?.productImage}}" class="img-fluid" width="70px"></td>
+          <td>{{order?.productName}}</td>
+          <td>{{order?.orderPrice}}</td>
+          <td>{{order?.orderBy}}</td>
+          <td><button class="btn btn-primary" routerLink="/dashboard/order-details/{{order?._id}}">View</button></td>
+          <td><button class="btn btn-danger" (click)="deleteOrder(order?._id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

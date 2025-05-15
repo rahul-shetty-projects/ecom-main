@@ -1,0 +1,137 @@
+<app-sidebar></app-sidebar>
+<body style="font-family: Helvetica,sans-serif;padding: 0;margin: 0;-webkit-font-smoothing: antialiased;color: #616161;">
+  <table class="wrapper" style="margin: 0;background: #fff;border: 0;width: 100%;text-align: center;">
+    <tbody>
+      <tr>
+        <td class="content-wrap" style="border: 0;width: 600px;text-align: center;background: #f5f5f5;">
+          <table class="content" style="margin: 0 auto;border: 0;width: 600px;text-align: center;" id="htmlData">
+            <tbody >
+              <tr>
+                <td class="em-spacer-1" style="height: 26px;"></td>
+              </tr>
+              <tr class="casper-header-row">
+                <td class="casper-header-td" style="text-align: center;"></td>
+              </tr>
+              <tr>
+              <td class="em-spacer-1" style="height: 26px;"></td>
+              </tr>
+              <tr>
+                <td class="box" style="background: #fff;padding: 0 25px;">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 0 auto;">
+                    <tbody>
+                      <tr>
+                        <td align="center">
+                          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 0 auto;">
+                            <tbody>
+                              <tr>
+                                <td align="center">
+                                  <h1 class="hero-primary" style="text-transform: uppercase;font-size: 28px;color: #283375;margin-top: 9px;">
+                                    Thankyou for the order.  
+                                  </h1>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="em-spacer-1" style="text-align: center;font-size: 14px;">You can see all the Orders in <label style="color: blue; cursor: pointer;" routerLink="/dashboard/myorders"> Orders History Page </label></td>
+                              </tr>
+                              <tr *ngIf="showOrderDetails">
+                                <td class="em-spacer-1" style="text-align: center;font-size: 14px;">
+                                  <label *ngFor="let o of orderDetailss"> | {{o}} | </label>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="em-spacer-1" style="height: 26px;"></td>
+                </tr>
+                <tr>
+                  <td class="box box-ext order-summary-box" style="background: #fff;padding: 0 25px;text-align: center;">
+                    <table class="order-summary" style="margin: 0 auto;text-align: left;width: 546px;border-top: 2px solid #eee;">
+                      <tbody>
+                        <tr>
+                          <td class="em-spacer-0" style="height: 20px;"></td>
+                        </tr>
+                        <div *ngIf="showOrderDetails">
+                          <tr class="line-item" *ngFor="let orderDetails of allOrders">
+                            <td class="line-item product-thumb-column" style="width: 90px;">
+                              <img crossorigin="*" alt="Queen" class="img-fluid" height="80" width="80" src={{orderDetails?.productImage}} style="width: 80px;height: 80px;">
+                              <!-- <div class="row-spacer" style="height: 8px;"></div> -->
+                            </td>
+                            <td class="line-item product-info-column m-3" style="width: 200px;">
+                              <div class="title" style="margin-bottom: 5px;">{{orderDetails?.productName}}</div>
+                              <div class="sub" style="font-size: 13px;margin-bottom: 3px;">Qty: 1</div>
+                            </td>
+                            <td class="line-item product-info-column"style="width: 100px;text-align: right;">
+                              <div class="title" style="margin-bottom: 5px;">$ {{orderDetails?.orderPrice}} </div>
+                              <div class="sub" style="font-size: 13px;margin-bottom: 3px;"><strong style="font-weight: 400;">Ready to Ship</strong></div>
+                            </td>
+                          </tr>
+                        </div>
+                        <tr align="center">
+                          <td class="lead secondary mt-4" colspan="3" style="font-family: Helvetica,sans-serif;text-align: center;border-collapse: collapse;font-size: 14px;letter-spacing: .045em;line-height: 24px;mso-line-height-rule: exactly;width: 100%;">
+                            Items in your order may ship separately.<br>View your order for shipping updates.                            
+                          </td>
+                        </tr>
+                        <tr align="center">
+                          <button class="btn btn-primary mt-3 mb-3" (click)="openCSV()">Click To Download Order Details in CSV</button>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="em-spacer-1" style="height: 26px;"></td>
+                </tr>
+                <tr>
+                  <td class="box box-ext cx-info-box" style="background: #fff;padding: 0 25px;text-align: center;color: #2a3376;">
+                    <table class="info-cta" style="margin: 0 auto;">
+                      <tbody>
+                        <tr>
+                          <td class="em-spacer-5" style="height: 32px;text-align: center;"></td>
+                        </tr>
+                        <tr>
+                          <td class="title" style="text-align: center;font-weight: 700;text-transform: uppercase;font-size: 19px;padding-bottom: 18px;">
+Questions? We're on call.                          </td>
+                        </tr>
+                        <tr>
+                          <td class="info" style="text-align: center;">
+Monday to Friday 9am - 9pm                         </td>
+                        </tr>
+                          <tr>
+                            <td class="info" style="text-align: center;">
+Saturday to Sunday 10am - 6pm                          </td>
+                          </tr>
+                        <tr>
+                          <td class="links" style="text-align: center;padding-top: 20px;">
+                     <span class="pipe">
+                              
+                            </span>
+                            dummywebsite@rahulshettyacademy.com                        </td>
+                        </tr>
+                        <tr>
+                          <td class="em-spacer-5" style="height: 32px;text-align: center;"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="em-spacer-1" style="height: 26px;"></td>
+                </tr>
+                  <tr>
+</tr>
+
+
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>

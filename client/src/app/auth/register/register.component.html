@@ -1,0 +1,347 @@
+<header>
+  <div class="header">
+  <section>
+  <span class="cross parallelogram">
+   <div class="logo skew-fix">Ecom</div>
+    <!-- <img src="https://i.ibb.co/wRTpk3V/logo.png" class="logo skew-fix" alt="LOGO."> -->
+  </span>
+  </section>
+  <section>
+  <div class="top-tab">
+  <span>
+  <!-- <a href="tel:0000000000"><i class="fa fa-phone"></i> (+0)-000-0000-000</a> -->
+  <a href="emailto:dummywebsite@rahulshettyacademy.com"><i class="fa fa-envelope"></i> dummywebsite@rahulshettyacademy.com</a>
+  </span>
+  <span>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-youtube"></i></a>
+  </span>
+  </div>
+  <!-- <div [class]="navbarClass" id="myTopnav">
+  <a href="#">
+    <div id="res_logo">Ecom</div>
+  </a>
+  <a href="#home" class="active">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <div class="dropdown">
+  <button class="dropbtn">Dropdown 
+  <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content">
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  </div>
+  </div> 
+  <a href="#about">About</a>
+  <a  style="font-size:15px;" class="icon" (click)="responsive()">&#9776;</a>
+  </div> -->
+  </section>
+  </div>
+  </header>
+  
+  
+  <!--BANNER-->
+  <div class="banner">
+    <section>
+      <h3>We Make Your Shopping Simple</h3>
+    <h1 class="title">Practice Website for <em>Rahul Shetty Academy</em> Students</h1>
+    <a routerLink="/auth/register" class="btn1">Register</a>
+     <!-- <a class="btn2">Contact Us</a> -->
+    </section>
+  <section>
+        <div class="login-section-wrapper" style="background-color: white;">
+          <div class="brand-wrapper">
+          </div>
+          <div class="login-wrapper my-auto p-5" *ngIf="showBox" style="text-align: center;">
+            <h1 class="headcolor">Account Created Successfully</h1>
+            <button class="btn btn-primary" routerLink="/auth">Login</button>
+          </div>
+          <div class="login-wrapper my-auto p-5" *ngIf="!showBox">
+            <h1 class="login-title">Register</h1>
+            <form [formGroup]="registerForm" (ngSubmit)="register()" >
+              <div class="row mb-2">
+                <div class="col-md-6">
+                  <div class="form-group"> 
+                    <label for="firstName">First Name</label>
+                    <input type="firstName" formControlName="firstName" id="firstName" class="form-control" placeholder="First Name"
+                    [ngClass]="{'is-invalid':formSubmitted && f.firstName.errors}">
+                    <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="f.firstName.errors.required">*First Name is required</div>
+                      <div *ngIf="f.firstName.errors.minlength">*First Name must be 3 or more character long</div>
+                      <div *ngIf="f.firstName.errors.maxlength">*First Name must be 12 or less character long</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group"> 
+                    <label for="lastName">Last Name</label>
+                    <input type="lastName" formControlName="lastName" id="lastName" class="form-control" placeholder="Last Name">
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="form-group col-md-6">
+                  <label for="email">Email</label>
+                  <input type="email" formControlName="userEmail" id="userEmail" class="form-control" placeholder="email@example.com"
+                  [ngClass]="{'is-invalid':formSubmitted && f.userEmail.errors}">
+                  <div *ngIf="formSubmitted && f.userEmail.errors" class="invalid-feedback">
+                    <div *ngIf="f.userEmail.errors.required">*Email is required</div>
+                    <div *ngIf="f.userEmail.errors.email">*Enter Valid Email</div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="userPhone">Phone Number</label>
+                  <input type="text" formControlName="userMobile" id="userMobile" class="form-control" 
+                  [ngClass]="{'is-invalid':formSubmitted && f.userMobile.errors}" placeholder="enter your number">
+                  <div *ngIf="formSubmitted && f.userMobile.errors" class="invalid-feedback">
+                    <div *ngIf="f.userMobile.errors.required">*Phone Number is required</div>
+                    <div *ngIf="f.userMobile.errors.pattern">*only numbers is allowed</div>
+                    <div *ngIf="f.userMobile.errors.minlength">*Phone Number must be 10 digit</div>
+                    <div *ngIf="f.userMobile.errors.maxlength">*Phone Number must be 10 digit</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="form-group col-md-6">
+                  <label for="userPhone">Occupation</label>
+                  <select class="custom-select" (change)="changeOcp($event)" formControlName="occupation">
+                    <option value="" disabled>Choose your occupation</option>
+                    <option *ngFor="let o of Ocp" [ngValue]="o">{{o}}</option>
+                 </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="userPhone">Gender</label>&nbsp; &nbsp;
+                  <label>
+                    <input type="radio" class="mt-3" value="Male" formControlName="gender">
+                      <span>Male</span>
+                  </label>&nbsp; &nbsp; &nbsp; &nbsp;
+                  <label>
+                    <input type="radio" class="mt-3" value="Female" formControlName="gender">
+                      <span>Female</span>
+                  </label>
+                </div>
+              </div>
+             <div class="row mb-2">
+                <div class="form-group col-md-6">
+                  <label for="password">Password</label>
+                  <input [type]="showPassword ? 'text' : 'password'" formControlName="userPassword" id="userPassword" class="form-control" 
+                  [ngClass]="{'is-invalid':formSubmitted && f.userPassword.errors}" placeholder="Passsword">
+                  <div *ngIf="formSubmitted && f.userPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.userPassword.errors.required">*Password is required</div>
+                  <!-- <div *ngIf="f.userPassword.errors.pattern">Password must be strong</div>
+                  <div *ngIf="f.userPassword.errors.minlength">Password must be 8 character long</div> -->
+                  </div>
+                </div>
+              <div class="form-group col-md-6">
+                <label for="confirmPassword">Confirm Password</label>
+                <input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" id="confirmPassword" class="form-control" 
+                [ngClass]="{'is-invalid':formSubmitted && f.confirmPassword.errors}" placeholder="Confirm Passsword">
+                <div *ngIf="formSubmitted && f.confirmPassword.errors" class="invalid-feedback">
+                  <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                  <div *ngIf="f.confirmPassword.errors.mustMatch">Password and Confirm Password must match with each other.</div>
+                </div>
+              </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-1" style="color: black;">
+                  <input type="checkbox" formControlName="required" [ngClass]="{'is-invalid':formSubmitted && f.required.errors}">
+                </div>
+                <div class="col-md-6"  style="color: black;">
+                  I am 18 year or Older
+                </div>
+                <div *ngIf="formSubmitted && f.required.errors" style="
+                width: 100%;
+                margin-top: 0.25rem;
+                font-size: 0.875em;
+                color: #dc3545;">
+                  <div *ngIf="f.required.errors.required">*Please check above checkbox</div>
+                </div>
+              </div>
+              <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Register">
+            </form>
+            
+            <p [routerLink]="['/auth/login']" class="login-wrapper-footer-text" style="cursor: pointer;">Already have an account? <a  class="text-reset">Login here</a></p>
+          </div>
+        </div>
+  <!-- <div class="form">
+  <h1 class="title">Estimate Cost</h1>
+  <form action="" method="post">
+  <fieldset>
+  <select name="weight" id="weight">
+  <option value="0">Truck Load</option>
+  <option value="500">500 KG</option>
+  <option value="1000">1000 KG</option>
+  <option value="1500">1500 KG</option>
+  <option value="2000">2000 KG</option>
+  <option value="5000">5000 KG</option>
+  <option value="10000">10000 KG</option>
+  </select>
+  </fieldset>
+  <fieldset>
+  <select name="distance" id="distance">
+  <option value="0">Distance To Travel</option>
+  <option value="10">10 KM</option>
+  <option value="20">20 KM</option>
+  <option value="30">30 KM</option>
+  <option value="40">40 KM</option>
+  <option value="50">50 KM</option>
+  <option value="50+">50+ KM</option>
+  <option value="100+">100+ KM</option>
+  </select>
+  </fieldset>
+  <fieldset>
+  <select name="type" id="type">
+  <option value="0">Logistic Type</option>
+  <option value="home">Home Shift</option>
+  <option value="food">Food Commodities</option>
+  <option value="essential">Essential Commodities</option>
+  <option value="electric">Electic Products</option>
+  <option value="other">Other</option>
+  </select>
+  </fieldset>
+  <fieldset class="half-column">
+  <span><h3>Estimation: $1500</h3></span>
+  <span><button onclick="validate()" class="btn1">Estimate</button></span>
+  </fieldset>
+  </form>
+  </div> -->
+  </section>
+  </div>
+  
+  
+  
+  <!--SECTION1-->
+  <div class="section1">
+  <div class="title_header">
+  <section>
+  <h1 class="title">Why People Choose Us?</h1>
+  </section>
+  <section>
+  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+  </section>
+  </div>
+  <section>
+  <!--CARD BEGINING-->
+  <div class="card active">
+  <span><i class="fa fa-users mb-4"></i></span>
+  <span><h1 class="title">3546540</h1>
+  <p class="mt-3">Successfull Orders</p></span>
+  </div>
+  <!--CARD END-->
+  <!--CARD BEGINING-->
+  <div class="card">
+  <span><i class="fa fa-users mb-4"></i></span>
+  <span><h1 class="title">37653</h1>
+  <p class="mt-3">Customers</p></span>
+  </div>
+  <!--CARD END-->
+  <!--CARD BEGINING-->
+  <div class="card">
+  <span><i class="fa fa-road mb-4"></i></span>
+  <span><h1 class="title">3243</h1>
+  <p class="mt-3">Sellers</p></span>
+  </div>
+  <!--CARD END-->
+  </section>
+  <section>
+  <!--CARD BEGINING-->
+  <div class="card">
+  <span><i class="fa fa-handshake-o mb-4"></i></span>
+  <span><h1 class="title">4500+</h1>
+  <p class="mt-3">Daily Orders</p></span>
+  </div>
+  <!--CARD END-->
+  <!--CARD BEGINING-->
+  <div class="card active">
+  <span><i class="fa fa-check-square-o mb-4"></i></span>
+  <span><h1 class="title">500+</h1>
+  <p class="mt-3">Daily New Customer Joining</p></span>
+  </div>
+  <!--CARD END-->
+  </section>
+  </div>
+<!-- <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 login-section-wrapper" style="background: linear-gradient(45deg, #2980b9, #3498db); min-height: 100vh;">
+        <div class="row">
+      </div>
+      </div>
+      <div class="col-sm-6 login-section-wrapper">
+        <div class="login-wrapper my-auto">
+          <h1 class="login-title">Register</h1>
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <div class="form-group"> 
+                  <label for="firstName">First Name</label>
+                  <input type="firstName" formControlName="firstName" id="firstName" class="form-control" placeholder="First Name"
+                  [ngClass]="{'is-invalid':formSubmitted && f.firstName.errors}">
+                  <div *ngIf="formSubmitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">*First Name is required</div>
+                    <div *ngIf="f.firstName.errors.minlength">*First Name must be 3 or more character long</div>
+                    <div *ngIf="f.firstName.errors.maxlength">*First Name must be 12 or less character long</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group"> 
+                  <label for="lastName">Last Name</label>
+                  <input type="lastName" formControlName="lastName" id="lastName" class="form-control" placeholder="Last Name">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" formControlName="userEmail" id="userEmail" class="form-control" placeholder="email@example.com"
+                [ngClass]="{'is-invalid':formSubmitted && f.userEmail.errors}">
+                <div *ngIf="formSubmitted && f.userEmail.errors" class="invalid-feedback">
+                  <div *ngIf="f.userEmail.errors.required">*Email is required</div>
+                  <div *ngIf="f.userEmail.errors.email">*Enter Valid Email</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="userPhone">Phone Number</label>
+                <input type="text" formControlName="userMobile" id="userMobile" class="form-control" 
+                [ngClass]="{'is-invalid':formSubmitted && f.userMobile.errors}" placeholder="enter your number">
+                <div *ngIf="formSubmitted && f.userMobile.errors" class="invalid-feedback">
+                  <div *ngIf="f.userMobile.errors.required">*Phone Number is required</div>
+                  <div *ngIf="f.userMobile.errors.pattern">*only numbers is allowed</div>
+                  <div *ngIf="f.userMobile.errors.minlength">*Phone Number must be 10 digit</div>
+                  <div *ngIf="f.userMobile.errors.maxlength">*Phone Number must be 10 digit</div>
+                </div>
+              </div>
+            </div>
+           <div class="row mb-2">
+              <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input [type]="showPassword ? 'text' : 'password'" formControlName="userPassword" id="userPassword" class="form-control" 
+                [ngClass]="{'is-invalid':formSubmitted && f.userPassword.errors}" placeholder="Passsword">
+                <div *ngIf="formSubmitted && f.userPassword.errors" class="invalid-feedback">
+                  <div *ngIf="f.userPassword.errors.required">*Password is required</div>
+                <div *ngIf="f.userPassword.errors.pattern">Password must be strong</div>
+                <div *ngIf="f.userPassword.errors.minlength">Password must be 8 character long</div>
+                </div>
+              </div>
+            <div class="form-group col-md-6">
+              <label for="confirmPassword">Confirm Password</label>
+              <input [type]="showPassword ? 'text' : 'password'" formControlName="confirmPassword" id="confirmPassword" class="form-control" 
+              [ngClass]="{'is-invalid':formSubmitted && f.confirmPassword.errors}" placeholder="Confirm Passsword">
+              <div *ngIf="formSubmitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Password and Confirm Password must match with each other.</div>
+              </div>
+            </div>
+            </div>
+            <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Register">
+          </form>
+          <p class="login-wrapper-footer-text">Already have an account? <a [routerLink]="['/auth/login']" class="text-reset">Login here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ngx-bootstrap-spinner></ngx-bootstrap-spinner> -->

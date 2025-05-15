@@ -1,0 +1,43 @@
+<nav>
+  <label class="logo" routerLink="/dashboard">
+    <!-- Automation Practice -->
+    <div class="logo-holder logo-7">
+      <a href="">
+        <i class="fas fa-book-open"></i>
+        <div class="left mt-1">
+          <h3>Automation</h3>
+          <p style="margin-top: -28px;">Automation Practice</p>
+        </div>
+      </a>
+    </div>
+  </label>
+  <input type="checkbox" id="check" />
+  <label for="check" class="hamberger-btn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <ul>
+    <li>
+      <button class="btn btn-custom" style="margin-top: -10px; margin-right: -40px;" routerLink="/dashboard/">
+        <i class="fa fa-home"></i> HOME
+      </button>
+    </li>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+    <li>
+      <button class="btn btn-custom" *ngIf="isAdmin"  style="margin-top: -10px;" routerLink="/dashboard/admin" >
+        <i class="fa fa-user-secret" aria-hidden="true"></i>&nbsp; ADMIN</button>
+    </li>
+    <li>
+      <button class="btn btn-custom" style="margin-top: -10px;" routerLink="/dashboard/myorders" >
+        <i class="fa fa-handshake-o"></i>&nbsp; ORDERS</button>
+    </li>
+    <li>
+      <button class="btn btn-custom" style="margin-top: -10px;" routerLink="/dashboard/cart" >
+        <i class="fa fa-shopping-cart"></i>&nbsp; Cart <label style="background-color: #96161f; border-radius: 2px; color: white; padding-left: 7px; padding-right: 7px;">{{cartCount}}</label>
+      </button>
+    </li>
+    <li>
+      <button class="btn btn-custom" style="margin-top: -10px;" (click)="logout()" >
+        <i class="fa fa-sign-out"  aria-hidden="true"></i> Sign Out
+      </button>
+      </li>
+  </ul>
+</nav>

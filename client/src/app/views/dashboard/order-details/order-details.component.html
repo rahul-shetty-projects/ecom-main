@@ -1,0 +1,108 @@
+<app-sidebar></app-sidebar>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-5">
+          <div class="email-wrapper ml-5" *ngIf="!orderDetails && show" style="text-align: center; font-weight: 800;">
+            <p class="blink_me">You are not authorize to view this order</p>
+          </div>
+            <div class='email-wrapper'  *ngIf="orderDetails">
+                <div class='email-preheader'>
+                  <p class='tagline'>Thank you for Shopping With Us</p>
+                </div>
+                <div class='email-container'>
+                  <div class='email-title'>
+                    order summary
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-6'>
+                      <small class='col-title'>Order Id</small>
+                      <div class='col-text -main'>{{orderDetails?._id}}</div>
+                    </div>
+                    <div class='col-md-6'>
+                      <!-- <small class='col-title'>Order Date</small>
+                      <div class='col-text'>{{orderDetails?.orderDate | date}}</div> -->
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-6'>
+                      <div class='address'>
+                        <div class='content-title'>
+                          Billing Address
+                        </div>
+                        <p class='text'>
+                          {{orderDetails?.orderBy}}
+                        </p>
+                        <!-- <p class='text'>
+                          Street
+                        </p>
+                        <p class='text'>
+                          PIN
+                        </p> -->
+                        <p class='text'>
+                          Country - {{orderDetails?.country}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class='col-md-6'>
+                      <div class='address'>
+                        <div class='content-title'>
+                          Delivery Address
+                        </div>
+                        <p class='text'>
+                            {{orderDetails?.orderBy}}
+                        </p>
+                        <!-- <p class='text'>
+                          Street
+                        </p>
+                        <p class='text'>
+                          PIN
+                        </p> -->
+                        <p class='text'>
+                          Country - {{orderDetails?.country}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-12'>
+                      <div class='content-title -centered'>
+                        Product Ordered
+                      </div>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-6 offset-md-3'>
+                      <div class='artwork-card'>
+                        <div class='artwork-card-image'>
+                          <img src='{{orderDetails?.productImage}}'>
+                        </div>
+                        <div class='artwork-card-info'>
+                          <div class='title'>
+                            {{orderDetails?.productName}}
+                          </div>
+                          <div class='info'>
+                            <div class='subject'>
+                              by ECOM
+                            </div>
+                            <div class='price'>
+                               $ {{orderDetails?.orderPrice}}
+                            </div>
+                            <div class='logo'></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+            
+                  <div class='btn-container'>
+                    <div class='btn -teal' routerLink="/dashboard/myorders" >
+                      View Orders
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+

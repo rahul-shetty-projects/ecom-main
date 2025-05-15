@@ -1,0 +1,131 @@
+<app-sidebar></app-sidebar>
+<!-- Navbar section -->
+<!-- <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom pt-2 pb-2"> <a class="navbar-brand ml-2 font-weight-bold" href="#"><span id="burgundy">The</span><span id="orange">Bakeshop</span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarColor">
+        <ul class="navbar-nav">
+            <li class="nav-item rounded bg-light search-nav-item"><input type="text" id="search" class="bg-light" placeholder="Search bread, cakes, desserts"><span class="fa fa-search text-muted"></span></li>
+            <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-user-o"></span><span class="text">Login</span></a> </li>
+            <li class="nav-item "><a class="nav-link" href="#"><span class="fa fa-shopping-cart"></span><span class="text">Cart</span></a> </li>
+        </ul>
+    </div>
+</nav> -->
+<div class="filter"> <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="true" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
+</div>
+<div id="mobile-filter">
+    <p class="pl-sm-0 pl-2"> Home | <b>Search</b></p>
+    <div class="border-bottom pb-2 ml-2 p-4">
+        <h4 id="burgundy">Filters</h4>
+    </div>
+    <form [formGroup]="searchForm">
+	<div class="py-2 border-bottom ml-3 p-4">
+        <input type="text" class="form-control" formControlName="productName" name="search"  placeholder="search">
+	</div>
+    <div class="py-2 border-bottom ml-3 p-4">
+        <h6 class="font-weight-bold mb-1">Price Range</h6>
+        <div class="row">
+            <div class="col-md-6 mb-1"><input type="text" class="form-control" formControlName="minPrice" name="minPrice"  placeholder="Min Price"></div>
+            <div class="col-md-6"><input type="text" class="form-control" formControlName="maxPrice" name="maxPrice"  placeholder="Max Price"></div>
+        </div>
+    </div>
+    <div class="py-2 border-bottom ml-3 p-4">
+        <h6 class="font-weight-bold">Categories</h6>
+        <div id="orange"><span class="fa fa-minus"></span></div>
+        <div class="form-group" *ngFor="let cat of categories; let i = index;">
+            <input type="checkbox" (change)="selectCategories($event,cat)"> <label for="cat">{{cat}}</label>
+        </div>
+    </div>
+    <div class="py-2 border-bottom ml-3 p-4">
+        <h6 class="font-weight-bold">Sub Categories</h6>
+        <div id="orange"><span class="fa fa-minus"></span></div>
+        <div class="form-group" *ngFor="let sub of subCategories; let i = index;">
+            <input type="checkbox" (change)="selectSubCategories($event,sub)"> <label for="sub">{{sub}}</label>
+        </div>
+    </div>
+    <div class="py-2 ml-3 p-4">
+        <h6 class="font-weight-bold">Search For</h6>
+        <div id="orange"><span class="fa fa-minus"></span></div>
+        <div class="form-group" *ngFor="let ge of genders; let i = index;">
+            <input type="checkbox" (change)="selectGender($event,ge)"> <label for="ge">{{ge}}</label>
+        </div>
+    </div>
+    </form>
+</div>
+<!-- Sidebar filter section -->
+<section id="sidebar">
+    <p> Home | <b>Search</b></p>
+    <div class="border-bottom pb-2 ml-2">
+        <h4 id="burgundy">Filters</h4>
+    </div>
+    <form [formGroup]="searchForm">
+    <div class="py-2 border-bottom ml-3">
+		<input type="text" class="form-control" (change)="changeText()" formControlName="productName" name="search"  placeholder="search">
+	</div>
+    <div class="py-2 border-bottom ml-3">
+        <h6 class="font-weight-bold">Price Range</h6>
+        <div class="row">
+            <div class="col-md-6"><input type="text" (change)="changeText()" class="form-control" formControlName="minPrice" name="minPrice"  placeholder="Min Price"></div>
+            <div class="col-md-6"><input type="text" (change)="changeText()" class="form-control" formControlName="maxPrice" name="maxPrice"  placeholder="Max Price"></div>
+        </div>
+     </div>
+    <div class="py-2 border-bottom ml-3">
+        <h6 class="font-weight-bold">Categories</h6>
+        <div id="orange"><span class="fa fa-minus"></span></div>
+            <div class="form-group" *ngFor="let cat of categories; let i = index;">
+                <input type="checkbox" (change)="selectCategories($event,cat)"> <label for="cat">{{cat}}</label>
+            </div>
+    </div>
+    <div class="py-2 border-bottom ml-3">
+        <h6 class="font-weight-bold">Sub Categories</h6>
+        <div id="orange"><span class="fa fa-minus"></span></div>
+        <div class="form-group" *ngFor="let sub of subCategories; let i = index;">
+            <input type="checkbox" (change)="selectSubCategories($event,sub)"> <label for="sub">{{sub}}</label>
+        </div>
+    </div>
+    <div class="py-2 ml-3">
+        <h6 class="font-weight-bold">Search For</h6>
+        <div id="orange"><span class="fa fa-minus"></span></div>
+        <div class="form-group" *ngFor="let ge of genders; let i = index;">
+            <input type="checkbox" (change)="selectGender($event,ge)"> <label for="ge">{{ge}}</label>
+        </div>
+    </div>
+    </form>
+</section>
+<!-- products section -->
+<section id="products" style="margin-top: 0vh !important;">
+    <div class="container">
+        <div class="d-flex flex-row mb-2">
+            <div class="text-muted m-2" id="res">Showing {{products?.length}} results &nbsp; | </div>
+            <label class="m-2 blink_me"> User can only see maximum 9 products on a page</label>
+            <!-- <div class="ml-auto mr-lg-4">
+                <div id="sorting" class="border rounded p-1 m-1"> <span class="text-muted">Sort by</span> <select name="sort" id="sort">
+                        <option value="popularity"><b>Popularity</b></option>
+                        <option value="prcie"><b>Price</b></option>
+                        <option value="rating"><b>Rating</b></option>
+                    </select> </div>
+            </div> -->
+        </div>
+        <div class="row" >
+            <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3" *ngFor="let product of products | paginate : {itemsPerPage : itemsPerPage,currentPage:p,totalItems:totalItems}">
+                <div class="card">
+                    <img class="card-img-top" src='{{product?.productImage}}'>
+                    <div class="card-body">
+                        <h5 style="text-transform: uppercase;"><b>{{product?.productName}}</b> </h5>
+                        <div class="d-flex flex-row my-2">
+                            <div class="text-muted" style="font-weight: 300;">$ {{product?.productPrice}}</div>
+                            <!-- <div class="ml-auto"> <button class="border rounded bg-white sign"><span class="fa fa-plus" id="orange"></span></button> <span class="px-sm-1">1 loaf</span> <button class="border rounded bg-white sign"><span class="fa fa-minus" id="orange"></span></button> </div> -->
+                        </div>
+                        <button class="btn w-40 rounded" routerLink="/dashboard/product-details/{{product?._id}}" ><i class="fa fa-eye" aria-hidden="true"></i> View</button>
+                        <button class="btn w-10 rounded" style="float: right;" (click)="addToCart(product)" ><i class="fa fa-shopping-cart"></i> Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="products">
+        <div class="col-md-4 offset-md-8">
+            <pagination-controls class="float-right" (pageChange)="getPage(p = $event)"></pagination-controls>
+        </div>
+    </div>
+</section>
+<div class="footer">Design and Developed By - Kunal Sharma</div>
+<ngx-spinner></ngx-spinner>

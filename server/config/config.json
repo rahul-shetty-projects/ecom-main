@@ -1,0 +1,28 @@
+{
+    "development": {
+        "PORT":3000,
+        "MONGODB_URI": "mongodb+srv://hussainv1:RSAcademy1234@cluster0.a1xvj.mongodb.net/rsacademy_ecom_mongo?retryWrites=true&w=majority",
+        "JWT_PRIVATE_KEY":"abc",
+        "SECRET_TOKEN":"secret",
+        "REFRESH_TOKEN":"av",
+        "AWS_ID":"***********",
+        "AWS_SECRET":"*********",
+        "AWS_BUCKET_NAME":"********",
+        "AWS_REGION":"********",
+        "email":"",
+        "password":""
+    },
+    "production": {
+        "PORT":6000,
+        "MONGODB_URI": "****",
+        "JWT_PRIVATE_KEY":"*******",
+        "SECRET_TOKEN":"secret",
+        "REFRESH_TOKEN":"*********",
+        "AWS_ID":"*********",
+        "AWS_SECRET":"*******",
+        "AWS_BUCKET_NAME":"******",
+        "AWS_REGION":"****",
+        "email":"",
+        "password":""
+    }
+}

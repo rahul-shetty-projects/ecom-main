@@ -1,0 +1,33 @@
+<div class="full">
+<div class="d-flex justify-content-center">
+<div class="card login-form" style="margin-top: 20vh;">
+	<div class="card-body mt-3">
+		<div class="brand-wrapper mt-2">
+            <!-- <img src="assets/images/logo.png" alt="logo" class="logo"> -->
+          </div>
+		<h3 class="card-title text-center">Forgot Password</h3>
+		
+		<div class="card-text">
+			<form [formGroup]="forgotForm" (ngSubmit)="forgotPassword()">
+				<div class="form-group">
+					<label for="userEmail" class="mt-1 mb-3">Enter your email address and we will send you a link to reset your password.</label>
+					<input type="email" class="form-control form-control-sm" formControlName="userEmail" 
+					[ngClass]="{'is-invalid':formSubmitted && f.userEmail.errors}" placeholder="Enter your email address">
+					<div *ngIf="formSubmitted && f.userEmail.errors" class="invalid-feedback">
+						<div *ngIf="f.userEmail.errors.required">*Email is required</div>
+                		<div *ngIf="f.userEmail.errors.email">*Enter Valid Email</div>
+					</div>
+				</div>
+                <div class="d-flex justify-content-center">
+				    <button type="submit" class="btn btn-custom btn-block" style="background-color: #96161f; color: white;">Send password Reset Email</button>
+                </div>
+				<div class="d-flex justify-content-center">
+				<a [routerLink]="['/auth/login']" class="text-reset">Login</a> &nbsp; &nbsp;
+				<a [routerLink]="['/auth/register']" class="text-reset">Register</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>

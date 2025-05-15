@@ -1,0 +1,82 @@
+<app-sidebar></app-sidebar>
+<div class="wrap cf">
+  <!-- <h1 class="projTitle">Responsive Table<span>-Less</span> Shopping Cart</h1> -->
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <!-- <a routerLink="/dashboard" class="continue">Continue Shopping</a> -->
+    <button type="button" style="float: right;" class="btn btn-primary" routerLink="/dashboard">Continue Shopping</button>
+  </div>
+  <div *ngIf="!cart && flag" style="text-align: center; margin-top: 15vh;">
+    <h1 style="color: lightgray;">No Products in Your Cart !</h1>
+  </div>
+  <div class="cart">
+<!--    <ul class="tableHead">
+      <li class="prodHeader">Product</li>
+      <li>Quantity</li>
+      <li>Total</li>
+       <li>Remove</li>
+    </ul>-->
+    <ul class="cartWrap" *ngFor="let c of cart;let i=index;">
+      <li *ngIf="i % 2 == 0" class="items even">
+        <div class="infoWrap"> 
+          <div class="cartSection">
+            <img src={{c?.productImage}} alt="" class="itemImg" />
+            <p class="itemNumber">#{{c?._id}}</p>
+            <h3>{{c?.productName}}</h3>
+            <p> MRP $ {{c?.productPrice}}</p>
+        
+            <p class="stockStatus"> In Stock</p>
+          </div>
+          <div class="prodTotal cartSection">
+            <p>$ {{c?.productPrice}}</p>
+          </div>
+          <div class="cartSection removeWrap">
+            <button class="btn btn-primary" style="margin-top: -20px;" (click)="order(c?._id)">Buy Now</button>  &nbsp;
+            <button class="btn btn-danger" style="margin-top: -20px;" (click)="removeFromCart(c._id)"><i class="fa fa-trash-o"  aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </li>
+      <li *ngIf="i % 2 != 0" class="items odd" >
+        <div class="infoWrap"> 
+          <div class="cartSection">
+            <img src={{c?.productImage}} alt="" class="itemImg" />
+            <p class="itemNumber">#{{c?._id}}</p>
+            <h3>{{c?.productName}}</h3>
+            <p> MRP $ {{c?.productPrice}}</p>
+        
+            <p class="stockStatus"> In Stock</p>
+          </div>
+          <div class="prodTotal cartSection">
+            <p>$ {{c?.productPrice}}</p>
+          </div>
+          <div class="cartSection removeWrap">
+            <button class="btn btn-primary" style="margin-top: -20px;" (click)="order(c?._id)">Buy Now</button>  &nbsp;
+            <button class="btn btn-danger" style="margin-top: -20px;" (click)="removeFromCart(c._id)"><i class="fa fa-trash-o"  aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </li>
+      
+      
+      <!--<li class="items even">Item 2</li>-->
+ 
+    </ul>
+  </div>
+  
+  <!-- <div *ngIf="cart" class="promoCode"><label for="promo">Have A Promo Code?</label><input type="text" name="promo" placholder="Enter Code" />
+  <a *ngIf="cart" href="#" class="btn"></a></div> -->
+  
+  <div class="subtotal cf" *ngIf="cart">
+    <ul style="list-style-type:none">
+      <li class="totalRow"><span class="label">Subtotal</span><span class="value">${{totalBill}}</span></li>
+      <li class="totalRow"><span class="label">Total</span><span class="value">${{totalBill}}</span></li>
+          <!-- <li class="totalRow"><span class="label">Shipping</span><span class="value">${{shipping}}</span></li>
+      
+            <li class="totalRow"><span class="label">Tax</span><span class="value">${{taxes}}</span></li> -->
+            <!-- <li class="totalRow final"><span class="label">Total</span><span class="value">${{totalBill}}</span></li> -->
+      <li class="totalRow">
+        <button type="button" class="btn btn-primary" (click)="buyAll()">Checkout</button>
+        <!-- <a  class="continue" (click)="buyAll()" >Buy All</a> -->
+      </li>
+    </ul>
+  </div>
+</div>
