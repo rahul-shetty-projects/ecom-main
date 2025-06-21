@@ -6,9 +6,9 @@ nav {
   // );
   height: 60px;
   max-width: 100%;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  border-bottom: 1px solid rgba(128, 128, 128,0.1);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: rgba(256, 256, 256, 1);
+  background-color: rgba(256,256, 256, 1);
 }
 label.logo {
   // color: cornsilk;
@@ -141,7 +141,7 @@ a:hover {
   color: #545454;
 }
 .logo-7 .left h3 {
-  font-family: "Muli", sans-serif;
+  font-family: 'Muli', sans-serif;
   font-weight: 300;
   font-size: 25px;
   text-transform: uppercase;
@@ -155,9 +155,9 @@ a:hover {
   // border-top: 1px dashed #919191;
   letter-spacing: 2px;
   // padding-top: 3px;
-  font-family: "Lobster", cursive;
+  font-family: 'Lobster', cursive;
 }
-.btn-custom {
+.btn-custom{
   background-color: transparent;
   color: #96161f;
   font-weight: 600;
@@ -166,35 +166,4 @@ a:hover {
 *:focus:not(:focus-visible) {
   outline: 0 !important;
   box-shadow: none !important;
-}
-
-a.blinkingText {
-  font-weight: bold;
-  background: #27b35f;
-  font-size: 20px;
-  color: #fff !important;
-  animation: blink 1s linear infinite;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.8;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 650px) {
-  a.blinkingText {
-    font-size: 16px;
-    margin-top: 0px;
-  }
-}
+  } 

@@ -15,8 +15,6 @@
   <label for="check" class="hamberger-btn">
     <i class="fas fa-bars"></i>
   </label>
-  <a href="https://qasummit.org/" class="blinkingText" target="_blank">QA Meetup with Rahul Shetty @Pune - Limited
-    Seats! Book Now!</a>
   <ul>
     <li>
       <button class="btn btn-custom" style="margin-top: -10px; margin-right: -40px;" routerLink="/dashboard/">
@@ -24,23 +22,22 @@
       </button>
     </li>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
     <li>
-      <button class="btn btn-custom" *ngIf="isAdmin" style="margin-top: -10px;" routerLink="/dashboard/admin">
+      <button class="btn btn-custom" *ngIf="isAdmin"  style="margin-top: -10px;" routerLink="/dashboard/admin" >
         <i class="fa fa-user-secret" aria-hidden="true"></i>&nbsp; ADMIN</button>
     </li>
     <li>
-      <button class="btn btn-custom" style="margin-top: -10px;" routerLink="/dashboard/myorders">
+      <button class="btn btn-custom" style="margin-top: -10px;" routerLink="/dashboard/myorders" >
         <i class="fa fa-handshake-o"></i>&nbsp; ORDERS</button>
     </li>
     <li>
-      <button class="btn btn-custom" style="margin-top: -10px;" routerLink="/dashboard/cart">
-        <i class="fa fa-shopping-cart"></i>&nbsp; Cart <label
-          style="background-color: #96161f; border-radius: 2px; color: white; padding-left: 7px; padding-right: 7px;">{{cartCount}}</label>
+      <button class="btn btn-custom" style="margin-top: -10px;" routerLink="/dashboard/cart" >
+        <i class="fa fa-shopping-cart"></i>&nbsp; Cart <label style="background-color: #96161f; border-radius: 2px; color: white; padding-left: 7px; padding-right: 7px;">{{cartCount}}</label>
       </button>
     </li>
     <li>
-      <button class="btn btn-custom" style="margin-top: -10px;" (click)="logout()">
-        <i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out
+      <button class="btn btn-custom" style="margin-top: -10px;" (click)="logout()" >
+        <i class="fa fa-sign-out"  aria-hidden="true"></i> Sign Out
       </button>
-    </li>
+      </li>
   </ul>
 </nav>
