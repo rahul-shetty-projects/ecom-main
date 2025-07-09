@@ -16,12 +16,12 @@ export class RoleGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      let token : User = this.authService.currentUserValue;
+      let token : User | null = this.authService.currentUserValue;
       if(token != null && next.data.roles.includes(token.userRole)){
         return true;
       }
     else{
-      this.router.navigate([ '/dashbaord']);
+      this.router.navigate([ '/dashboard']);
     }
     return false;
   }
