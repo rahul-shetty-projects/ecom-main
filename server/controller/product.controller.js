@@ -52,7 +52,7 @@ module.exports.getAllProducts = async (req,res,next) => {
         console.log('Invalid key');
       }
     }
-    let query=Object.assign({$or:[{productAddedBy:'admin@gmail.com'},{productAddedBy:req.user._id}]},query1,query2,query3,query4,query5);
+    let query=Object.assign({$or:[{productAddedBy:'admin'},{productAddedBy:req.user._id}]},query1,query2,query3,query4,query5);
     await Product.aggregate([
       {
         $match:query
