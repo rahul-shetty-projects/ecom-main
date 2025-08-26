@@ -167,3 +167,34 @@ a:hover {
   outline: 0 !important;
   box-shadow: none !important;
   } 
+
+  a.blinkingText {
+    font-weight: bold;
+    background: #27b35f;
+    font-size: 20px;
+    color: #fff !important;
+    animation: blink 1s linear infinite;
+    text-decoration: underline;
+    cursor: pointer; 
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+  
+    50% {
+      opacity: 0.8;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 650px) {
+    a.blinkingText {
+      font-size: 16px;
+      margin-top: 0px;
+    }
+  }
